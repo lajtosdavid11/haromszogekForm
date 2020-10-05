@@ -12,9 +12,9 @@ namespace haromszogek
 {
     public partial class frmFo : Form
     {
-        private int Aoldal;
-        private int Boldal;
-        private int Coldal;
+        private double Aoldal;
+        private double Boldal;
+        private double Coldal;
         public frmFo()
         {
             Aoldal = 0;
@@ -36,22 +36,33 @@ namespace haromszogek
 
         private void btnSzamol_Click(object sender, EventArgs e)
         {
-            Aoldal = int.Parse(tbAoldal.Text);
-            Boldal = int.Parse(tbBoldal.Text);
-            Coldal = int.Parse(tbColdal.Text);
-            if (Aoldal == 0 || Boldal == 0 || Coldal == 0)
+            
+            try
             {
-                MessageBox.Show("Ez nem lehet nulla", "Ez jó",MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                var h = new Haromszog(Aoldal, Boldal, Coldal);
-               
-                List<string> adatok = h.AdatokSzoveg();
-                foreach (var a in adatok)
+                Aoldal = Convert.ToDouble(tbAoldal.Text);
+                Boldal = Convert.ToDouble(tbBoldal.Text);
+                Coldal = Convert.ToDouble(tbColdal.Text);
+                if (Aoldal == 0 || Boldal == 0 || Coldal == 0)
                 {
-                    lbHaromszogLista.Items.Add(a);
+                    MessageBox.Show("Ez nem lehet nulla", "Ez jó", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    var h = new Haromszog(Aoldal, Boldal, Coldal);
+
+                    List<string> adatok = h.AdatokSzoveg();
+                    foreach (var a in adatok)
+                    {
+                        lbHaromszogLista.Items.Add(a);
+                    }
+                }
+            }
+            catch (Exception esc)
+            {
+
+                MessageBox.Show("Számot adj meg","Hiba", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                tbAoldal.Focus();
+                
             }
         }
 
