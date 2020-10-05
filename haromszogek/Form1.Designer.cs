@@ -40,6 +40,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbHaromszogLista = new System.Windows.Forms.ListBox();
             this.btnTorol = new System.Windows.Forms.Button();
+            this.btnFajlbol = new System.Windows.Forms.Button();
+            this.ofdMegnyitas = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +104,7 @@
             // 
             // btnKilepes
             // 
-            this.btnKilepes.Location = new System.Drawing.Point(135, 210);
+            this.btnKilepes.Location = new System.Drawing.Point(129, 254);
             this.btnKilepes.Name = "btnKilepes";
             this.btnKilepes.Size = new System.Drawing.Size(107, 39);
             this.btnKilepes.TabIndex = 7;
@@ -156,11 +158,28 @@
             this.btnTorol.UseVisualStyleBackColor = true;
             this.btnTorol.Click += new System.EventHandler(this.btnTorol_Click);
             // 
+            // btnFajlbol
+            // 
+            this.btnFajlbol.Location = new System.Drawing.Point(129, 204);
+            this.btnFajlbol.Name = "btnFajlbol";
+            this.btnFajlbol.Size = new System.Drawing.Size(103, 29);
+            this.btnFajlbol.TabIndex = 12;
+            this.btnFajlbol.Text = "Fájlból";
+            this.btnFajlbol.UseVisualStyleBackColor = true;
+            this.btnFajlbol.Click += new System.EventHandler(this.btnFajlbol_Click);
+            // 
+            // ofdMegnyitas
+            // 
+            this.ofdMegnyitas.FileName = "openFileDialog1";
+            this.ofdMegnyitas.Filter = "Text Files| *.txt";
+            this.ofdMegnyitas.InitialDirectory = "C:\\Users\\nyb15lajtosd\\source\\repos\\haromszogek\\haromszogek\\bin\\Debug";
+            // 
             // frmFo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 333);
+            this.Controls.Add(this.btnFajlbol);
             this.Controls.Add(this.btnTorol);
             this.Controls.Add(this.lbHaromszogLista);
             this.Controls.Add(this.panel1);
@@ -191,6 +210,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListBox lbHaromszogLista;
         private System.Windows.Forms.Button btnTorol;
+        private System.Windows.Forms.Button btnFajlbol;
+        private System.Windows.Forms.OpenFileDialog ofdMegnyitas;
     }
 }
 
