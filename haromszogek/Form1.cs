@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace haromszogek
 {
@@ -88,7 +89,44 @@ namespace haromszogek
         private void btnFajlbol_Click(object sender, EventArgs e)
         {
             lbHaromszogLista.Items.Clear();
-            ofdMegnyitas.ShowDialog();
+            if (ofdMegnyitas.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    StreamReader sr = new StreamReader(ofdMegnyitas.FileName);
+                    try
+                    {
+
+                        while (!sr.EndOfStream)
+                        {
+                            string sor = sr.ReadLine();
+                            var h = new Haromszog(sor);
+                            lbHaromszogLista.Items.Add("Fájlból olvasás");
+                            foreach (var a in h.AdatokSzoveg())
+                            {
+                                lbHaromszogLista.Items.Add(a);
+                            }
+                            lbHaromszogLista.Items.Add("-----------------------");
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        sr.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    
+                }
+            }
+            
         }
     }
 }

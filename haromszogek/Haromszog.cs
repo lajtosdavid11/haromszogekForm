@@ -17,6 +17,14 @@ namespace haromszogek
             this.coldal = coldal;
             Szerk();
         }
+        public Haromszog(string sor)
+        {
+            string[] adatok = sor.Split(';');
+            aoldal = Convert.ToDouble(adatok[0]);
+            boldal = Convert.ToDouble(adatok[1]);
+            coldal = Convert.ToDouble(adatok[2]);
+            Szerk();
+        }
         public double Kerulet { get; private set; }
         public double Terulet { get; private set; }
 
@@ -40,7 +48,9 @@ namespace haromszogek
 
         private void Szerk()
         {
-            if (aoldal + boldal > coldal && boldal + coldal > aoldal && aoldal + coldal > boldal)
+            if (aoldal + boldal > coldal &&
+                boldal + coldal > aoldal &&
+                aoldal + coldal > boldal)
             {
                 Szerkesztheto = true;
                 Terulet=teruletSzamitas();
